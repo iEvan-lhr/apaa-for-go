@@ -1,4 +1,4 @@
-module cloud-deer
+module github.com/iEvan-lhr/apaa-for-go
 
 go 1.19
 

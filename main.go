@@ -1,11 +1,11 @@
 package main
 
 import (
-	"cloud-deer/do"
-	"cloud-deer/model"
-	"cloud-deer/router"
-	"cloud-deer/structs"
-	"cloud-deer/websocket"
+	"github.com/iEvan-lhr/apaa-for-go/do"
+	"github.com/iEvan-lhr/apaa-for-go/model"
+	"github.com/iEvan-lhr/apaa-for-go/router"
+	"github.com/iEvan-lhr/apaa-for-go/structs"
+	"github.com/iEvan-lhr/apaa-for-go/websocket"
 	"github.com/iEvan-lhr/nihility-dust/anything"
 	"github.com/iEvan-lhr/worker/engine"
 )

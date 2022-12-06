@@ -1,8 +1,8 @@
 package model
 
 import (
-	"cloud-deer/structs"
 	"encoding/hex"
+	"github.com/iEvan-lhr/apaa-for-go/structs"
 	tools "github.com/iEvan-lhr/exciting-tool"
 	"github.com/iEvan-lhr/nihility-dust/anything"
 	"golang.org/x/crypto/md4"

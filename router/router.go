@@ -1,7 +1,7 @@
 package router
 
 import (
-	"cloud-deer/structs"
+	"github.com/iEvan-lhr/apaa-for-go/structs"
 	tools "github.com/iEvan-lhr/exciting-tool"
 	"github.com/iEvan-lhr/nihility-dust/anything"
 	"net/http"
