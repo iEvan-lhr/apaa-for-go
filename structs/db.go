@@ -182,6 +182,40 @@ func Find(data, result any) {
 	tools.Unmarshal(res, result)
 }
 
+func Sure(data any) bool {
+	q := &Query{}
+	switch data.(type) {
+	case string:
+		q.Sql = data.(string)
+	default:
+		q.Sql = tools.Query(data)
+	}
+	q.Result = make(chan []map[string]interface{})
+	anything.OnceSchedule("QuerySql", []any{q})
+	res := <-q.Result
+	if len(res) > 0 {
+		return true
+	}
+	return false
+}
+
+func Check(data any) bool {
+	q := &Query{}
+	switch data.(type) {
+	case string:
+		q.Sql = data.(string)
+	default:
+		q.Sql = tools.Check(data)
+	}
+	q.Result = make(chan []map[string]interface{})
+	anything.OnceSchedule("QuerySql", []any{q})
+	res := <-q.Result
+	if len(res) > 0 {
+		return false
+	}
+	return true
+}
+
 func Save(model any) {
-	anything.OnceSchedule("ExecSql", []any{tools.Save(model)})
+	anything.DoSchedule("ExecSql", []any{tools.Save(model)})
 }
