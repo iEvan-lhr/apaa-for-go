@@ -30,16 +30,18 @@ func (d *Dad) GetDadConn(mission chan *anything.Mission, data []any) {
 
 func (d *Dad) SendWebsocketMessage(mission chan *anything.Mission, data []any) {
 	req := data[1].(*http.Request)
+	//log.Println(string(tools.ReturnValueByTwo(io.ReadAll(req.Body)).([]byte)))
 	talk := tools.UnMarshal(req, &structs.Talk{}).(*structs.Talk)
 	switch talk.TalkType {
-	case "T":
+	case 1:
 		mission <- &anything.Mission{Name: "-SendMessage", Pursuit: []any{"string", string(tools.Marshal(talk))}}
-	case "I":
+	case 2:
 		image := &structs.UserImage{
-			ImageID: int64(tools.ReturnValue(tools.Make(talk.Say).Atoi()).(int)),
+			ImageId: int64(tools.ReturnValue(tools.Make(talk.Say).Atoi()).(int)),
 		}
-		structs.Find(image, &image)
-		talk.Say = image.Image
+		var answer []structs.UserImage
+		structs.Find(image, &answer)
+		talk.Say = answer[0].Image
 		mission <- &anything.Mission{Name: "-SendMessage", Pursuit: []any{"string", string(tools.Marshal(talk))}}
 	}
 

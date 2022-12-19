@@ -211,9 +211,9 @@ func Check(data any) bool {
 	anything.OnceSchedule("QuerySql", []any{q})
 	res := <-q.Result
 	if len(res) > 0 {
-		return false
+		return true
 	}
-	return true
+	return false
 }
 
 func Save(model any) {

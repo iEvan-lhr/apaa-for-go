@@ -17,7 +17,7 @@ func (u *UserModel) generateUC(user *structs.User) bool {
 }
 
 func (u *UserModel) checkUserLegitimate(user *structs.User) bool {
-	if structs.Sure(&structs.DenKeyByRegister{DenKey: user.DenKey}) && structs.Check(user) {
+	if structs.Sure(&structs.DenKeyByRegister{DenKey: user.DenKey}) && !structs.Check(user) {
 		if len(user.Password) > 7 {
 			// TODO 判断密码强弱
 		} else {

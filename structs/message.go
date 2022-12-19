@@ -21,7 +21,7 @@ type Talk struct {
 	Tid      int    `json:"tid"`
 	UserTalk string `json:"userTalk"`
 	Say      string `json:"say"`
-	TalkType string `json:"talkType"`
+	TalkType int    `json:"talkType"`
 	Me       bool   `json:"me"`
 	Color    string `json:"color"`
 	Times    string `json:"times"`

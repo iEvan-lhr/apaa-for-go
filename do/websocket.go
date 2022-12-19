@@ -25,7 +25,7 @@ func (w *Websocket) AddWebSocketListener(mission chan *anything.Mission, data []
 	}
 	if _, ok := w.home.Load(data[0]); !ok {
 		w.home.Store(data[0], data[1])
-		<-anything.DoChanN("SendMessage", []any{"string", string(tools.Marshal(structs.Talk{Color: "green", TalkType: "T", UserTalk: "ADMIN", Say: "系统公告:" + data[0].(string) + "已加入聊天室"}))})
+		<-anything.DoChanN("SendMessage", []any{"string", string(tools.Marshal(structs.Talk{Color: "green", TalkType: 1, UserTalk: "ADMIN", Say: "系统公告:" + data[0].(string) + "已加入聊天室"}))})
 		mission <- &anything.Mission{Name: anything.ExitFunction, Pursuit: []any{"Websocket连接成功" + data[0].(string)}}
 	} else {
 		mission <- &anything.Mission{Name: anything.ExitFunction, Pursuit: []any{"Websocket连接失败 请检查" + data[0].(string)}}
@@ -72,7 +72,7 @@ func (w *Websocket) ReadMessage(data []any) {
 		if messageType == -1 || err != nil {
 			log.Println(string(p))
 			anything.DoChanN("RemoveWebSocketListener", []any{data[1]})
-			anything.DoChanN("SendMessage", []any{"string", string(tools.Marshal(structs.Talk{Color: "green", TalkType: "T", UserTalk: "ADMIN", Say: "系统公告:" + data[1].(string) + "已退出聊天室"}))})
+			anything.DoChanN("SendMessage", []any{"string", string(tools.Marshal(structs.Talk{Color: "green", TalkType: 1, UserTalk: "ADMIN", Say: "系统公告:" + data[1].(string) + "已退出聊天室"}))})
 			break
 		}
 	}
