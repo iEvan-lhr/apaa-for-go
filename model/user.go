@@ -17,7 +17,7 @@ func (u *UserModel) Login(mission chan *anything.Mission, data []any) {
 	structs.Find(login, &user)
 	if len(user) == 1 {
 		user[0].DenKey, user[0].Identity = build.Encryption(time.Now().Add(15 * time.Minute).Unix())
-		mission <- &anything.Mission{Pursuit: []any{string(tools.Marshal(structs.UserRes{Status: 200, Ans: "Succ", Identity: user[0].Identity}))}}
+		mission <- &anything.Mission{Pursuit: []any{string(tools.Marshal(structs.UserRes{Status: 200, Ans: "Succ", Identity: user[0].Identity, Id: user[0].Id}))}}
 	} else {
 		mission <- &anything.Mission{Pursuit: []any{string(tools.Marshal(structs.UserRes{Status: 202, Ans: "Fail"}))}}
 	}

@@ -27,3 +27,9 @@ func (r *Router) UserRegister(mission chan *anything.Mission, data []any) {
 	pursuit := (<-anything.DoChanN("Register", []any{tools.UnMarshal(req, &structs.User{})})).Pursuit
 	mission <- &anything.Mission{Name: anything.ExitFunction, Pursuit: []any{pursuit}}
 }
+
+func (r *Router) FindImageByUserAndRoom(mission chan *anything.Mission, data []any) {
+	req := data[1].(*http.Request)
+	pursuit := (<-anything.DoChanN("GetImages", []any{tools.UnMarshal(req, &structs.UserImage{})})).Pursuit
+	mission <- &anything.Mission{Name: anything.ExitFunction, Pursuit: []any{pursuit}}
+}
