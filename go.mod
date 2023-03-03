@@ -5,8 +5,8 @@ go 1.19
 require (
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/gorilla/websocket v1.5.0
-	github.com/iEvan-lhr/encryption-apaa v0.0.0-20221206033855-cb7769ebdea2
-	github.com/iEvan-lhr/exciting-tool v0.0.0-20221206100544-8c4887c4570b
+	github.com/iEvan-lhr/encryption-apaa v0.0.0-20230303070533-216cba435289
+	github.com/iEvan-lhr/exciting-tool v0.0.0-20230113034646-dae30c7c994b
 	github.com/iEvan-lhr/nihility-dust v0.1.3-0.20221207063015-aadd84a7f15c
 	github.com/iEvan-lhr/worker v0.0.0-20221213051707-a2ad37bae934
 	golang.org/x/crypto v0.3.0
